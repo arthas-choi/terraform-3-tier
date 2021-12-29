@@ -53,7 +53,7 @@ resource "aws_launch_configuration" "was-launch-configuration" {
 
   user_data = <<-EOF
             #!/bin/bash
-            sudo service nginx start
+            sudo systemctl start tomcat
             EOF
 }
 
@@ -79,7 +79,7 @@ resource "aws_autoscaling_group" "was-autoscaling-group" {
   }
 }
 
-resource "aws_autoscaling_attachment" "web-asg-attachment" {
+resource "aws_autoscaling_attachment" "was-asg-attachment" {
   autoscaling_group_name = aws_autoscaling_group.was-autoscaling-group.id
   alb_target_group_arn   = aws_lb_target_group.was-alb-target-group.arn
 }
