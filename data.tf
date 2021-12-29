@@ -24,11 +24,31 @@ data "aws_ami" "amazon-linux2" {
 
 data "aws_ami" "nginx-web" {
   most_recent = true
-  owners = ["self"]
+  owners = ["731727215156"]
 
   filter {
     name = "name"
-    values = ["NGINX*"]
+    values = ["*WEB*"]
+  }
+
+  filter {
+    name = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+}
+
+data "aws_ami" "tomcat-was" {
+  most_recent = true
+  owners = ["731727215156"]
+
+  filter {
+    name = "name"
+    values = ["WAS-AMI2"]
   }
 
   filter {

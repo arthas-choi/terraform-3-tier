@@ -1,6 +1,6 @@
 resource "aws_launch_configuration" "web-launch-configuration" {
   name   = "${var.resource_prefix}-WEB-LAUNCH-CONFIGURATION"
-  image_id      = var.web_ami.id
+  image_id      = data.aws_ami.nginx-web.id
   instance_type = var.web_instance_type
 
   key_name = var.instance_key_pair_name
@@ -43,7 +43,7 @@ resource "aws_autoscaling_attachment" "web-asg-attachment" {
 
 resource "aws_launch_configuration" "was-launch-configuration" {
   name   = "${var.resource_prefix}-WAS-LAUNCH-CONFIGURATION"
-  image_id      = var.was_ami.id //was img
+  image_id      = data.aws_ami.tomcat-was.id
   instance_type = var.was_instance_type
 
   key_name = var.instance_key_pair_name
