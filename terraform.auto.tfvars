@@ -1,0 +1,13 @@
+region = "ap-southeast-2" //sydney
+resource_prefix = "Terraform-3-tier-Demo"
+vpc_cidr = "10.0.0.0/16"
+subnet_cidr = "10.0.0.0/20"
+bastion_instance_type = "t2.micro"
+web_instance_type = "t2.micro"
+was_instance_type = "t2.micro"
+bastion_key_pair_name = "devos-demo-sydney-instance-key"
+instance_key_pair_name = "devos-demo-sydney-target-instance-key"
+db_username = "demouser"
+db_password = "demopass"
+web_ami = "ami-054e417a0417638f3"
+was_ami = "ami-01cab1e6f40e84581"
