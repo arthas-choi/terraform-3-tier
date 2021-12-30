@@ -1,9 +1,9 @@
 variable "region" {
-  default = "ap-southeast-2"
-  description = "Amazon Region (Sydney)"
+  default = "ap-northeast-2"
+  description = "Amazon Region"
 }
 variable "resource_prefix" {
-  default = "Terraform-3-tier-Demo"
+  default = "DevOS-3-tier-Demo"
   description = "resource name prefix"
   type = string
 }
@@ -34,12 +34,12 @@ variable "was_instance_type" {
 }
 
 variable "bastion_key_pair_name" {
-  default = "devos-demo-sydney-instance-key"
+  default = "devos-demo-seoul-bastion-key"
   description = "Bastion Instance Key Pair Name"
 }
 
 variable "instance_key_pair_name" {
-  default = "devos-demo-sydney-target-instance-key"
+  default = "devos-demo-seoul-instance-key"
   description = "Instance Key Pair Name"
 }
 
@@ -51,14 +51,4 @@ variable "db_username" {
 variable "db_password" {
   default = "demopass"
   description = "RDS Access Password"
-}
-
-variable "web_ami" {
-  default = "ami-054e417a0417638f3"
-  description = "WEB EC2 Machine Image"
-}
-
-variable "was_ami" {
-  default = "ami-01cab1e6f40e84581"
-  description = "WAS EC2 Machine Image"
 }
