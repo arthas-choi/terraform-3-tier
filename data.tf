@@ -22,6 +22,25 @@ data "aws_ami" "amazon-linux2" {
   }
 }
 
+data "aws_ami" "amazon-common-ami" {
+  most_recent = true
+  owners = ["amazon"]
+  filter {
+    name = "name"
+    values = ["amzn2-ami-kernel-5.10-hvm-2.0*"]
+  }
+
+  filter {
+    name = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  filter {
+    name = "root-device-type"
+    values = ["ebs"]
+  }
+}
+
 /*data "aws_ami" "nginx-web" {
   most_recent = true
   owners = ["731727215156"]
@@ -42,26 +61,7 @@ data "aws_ami" "amazon-linux2" {
   }
 }*/
 
-data "aws_ami" "amazon-nginx" {
-  most_recent = true
-  owners = ["amazon"]
-  filter {
-    name = "name"
-    values = ["amzn2-ami-kernel-5.10-hvm-2.0*"]
-  }
-
-  filter {
-    name = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  filter {
-    name = "root-device-type"
-    values = ["ebs"]
-  }
-}
-
-data "aws_ami" "tomcat-was" {
+/*data "aws_ami" "tomcat-was" {
   most_recent = true
   owners = ["731727215156"]
 
@@ -79,4 +79,4 @@ data "aws_ami" "tomcat-was" {
     name   = "root-device-type"
     values = ["ebs"]
   }
-}
+}*/

@@ -1,6 +1,6 @@
 resource "aws_launch_configuration" "web-launch-configuration" {
   name   = "${var.resource_prefix}-WEB-LAUNCH-CONFIGURATION"
-  image_id      = data.aws_ami.amazon-nginx.id
+  image_id      = data.aws_ami.amazon-common-ami.id
   instance_type = var.web_instance_type
 
   key_name = var.instance_key_pair_name
@@ -44,7 +44,7 @@ resource "aws_autoscaling_attachment" "web-asg-attachment" {
 
 resource "aws_launch_configuration" "was-launch-configuration" {
   name   = "${var.resource_prefix}-WAS-LAUNCH-CONFIGURATION"
-  image_id      = data.aws_ami.tomcat-was.id
+  image_id      = data.aws_ami.amazon-common-ami.id
   instance_type = var.was_instance_type
 
   key_name = var.instance_key_pair_name
@@ -54,7 +54,10 @@ resource "aws_launch_configuration" "was-launch-configuration" {
 
   user_data = <<-EOF
             #!/bin/bash
-            sudo systemctl start tomcat
+            amazon-linux-extras install -y java-openjdk11
+            wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.73/bin/apache-tomcat-8.5.73.tar.gz
+            tar xvf apache-tomcat-8.5.73.tar.gz
+            ./apache-tomcat-8.5.73/bin/startup.sh
             EOF
 }
 
