@@ -34,14 +34,14 @@ resource "aws_lb" "was-alb" {
 
 resource "aws_lb_target_group" "was-alb-target-group" {
   name = "${var.resource_prefix}-WAS-TG"
-  port = 80
+  port = 8080
   protocol = "HTTP"
   vpc_id = aws_vpc.tier-vpc.id
 }
 
 resource "aws_lb_listener" "was-alb-listener" {
   load_balancer_arn = aws_lb.was-alb.arn
-  port = "80"
+  port = "8080"
   protocol = "HTTP"
 
   default_action {
