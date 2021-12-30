@@ -14,7 +14,7 @@ resource "aws_lb_target_group" "external-was-alb-target-group" {
 }
 
 resource "aws_lb_listener" "external-was-alb-listener" {
-  load_balancer_arn = aws_lb.web-alb.arn
+  load_balancer_arn = aws_lb.external-was-alb.arn
   port = 8080
   protocol = "HTTP"
 
