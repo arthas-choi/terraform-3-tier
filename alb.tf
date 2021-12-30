@@ -41,7 +41,7 @@ resource "aws_lb_target_group" "was-alb-target-group" {
 
 resource "aws_lb_listener" "was-alb-listener" {
   load_balancer_arn = aws_lb.was-alb.arn
-  port = "8080"
+  port = 8080
   protocol = "HTTP"
 
   default_action {
