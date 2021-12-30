@@ -1,5 +1,5 @@
 resource "aws_lb" "external-was-alb" {
-  name = "EXTERNAL-${var.resource_prefix}-WAS-ALB"
+  name = "EXTERNAL-WAS-ALB"
   internal = false
   load_balancer_type = "application"
   security_groups = [aws_security_group.was-alb-sg.id]
@@ -7,7 +7,7 @@ resource "aws_lb" "external-was-alb" {
 }
 
 resource "aws_lb_target_group" "external-was-alb-target-group" {
-  name = "EXTERNAL-${var.resource_prefix}-WAS-TG"
+  name = "EXTERNAL-WAS-TG"
   port = 8080
   protocol = "HTTP"
   vpc_id = aws_vpc.tier-vpc.id
