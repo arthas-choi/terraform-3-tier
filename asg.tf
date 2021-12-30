@@ -1,6 +1,6 @@
 resource "aws_launch_configuration" "web-launch-configuration" {
   name   = "${var.resource_prefix}-WEB-LAUNCH-CONFIGURATION"
-  image_id      = data.aws_ami.nginx-web.id
+  image_id      = data.aws_ami.amazon-nginx.id
   instance_type = var.web_instance_type
 
   key_name = var.instance_key_pair_name
@@ -9,9 +9,10 @@ resource "aws_launch_configuration" "web-launch-configuration" {
   security_groups = [aws_security_group.web-lc-sg.id]
 
   user_data = <<-EOF
-            #!/bin/bash
-            sudo service nginx start
-            EOF
+              #!/bin/bash
+              sudo amazon-linux-extras install -y nginx1
+              sudo service nginx start
+              EOF
 }
 
 resource "aws_autoscaling_group" "web-autoscaling-group" {

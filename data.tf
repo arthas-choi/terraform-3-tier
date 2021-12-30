@@ -17,12 +17,12 @@ data "aws_ami" "amazon-linux2" {
   }
 
   filter {
-    name   = "root-device-type"
+    name = "root-device-type"
     values = ["ebs"]
   }
 }
 
-data "aws_ami" "nginx-web" {
+/*data "aws_ami" "nginx-web" {
   most_recent = true
   owners = ["731727215156"]
 
@@ -38,6 +38,25 @@ data "aws_ami" "nginx-web" {
 
   filter {
     name   = "root-device-type"
+    values = ["ebs"]
+  }
+}*/
+
+data "aws_ami" "amazon-nginx" {
+  most_recent = true
+  owners = ["amazon"]
+  filter {
+    name = "name"
+    values = ["amzn2-ami-kernel-5.10-hvm-2.0*"]
+  }
+
+  filter {
+    name = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  filter {
+    name = "root-device-type"
     values = ["ebs"]
   }
 }
