@@ -140,7 +140,7 @@ resource "aws_security_group" "was-lc-sg" {
     from_port = 22
     to_port = 22
     protocol = "tcp"
-    security_groups = [aws_security_group.was-alb-sg.id]
+    security_groups = [aws_security_group.bastion-sg.id]
   }
 
   ingress {
