@@ -84,3 +84,8 @@ resource "aws_autoscaling_attachment" "was-asg-attachment" {
   autoscaling_group_name = aws_autoscaling_group.was-autoscaling-group.id
   alb_target_group_arn   = aws_lb_target_group.was-alb-target-group.arn
 }
+
+resource "aws_autoscaling_attachment" "external-was-asg-attachment" {
+  autoscaling_group_name = aws_autoscaling_group.was-autoscaling-group.id
+  alb_target_group_arn   = aws_lb_target_group.external-was-alb-target-group.arn
+}
