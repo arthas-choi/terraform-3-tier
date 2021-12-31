@@ -188,8 +188,8 @@ resource "aws_security_group" "rds-sg" {
   }
 
   ingress {
-    from_port = 22
-    to_port = 22
+    from_port = 3306
+    to_port = 3306
     protocol = "tcp"
     security_groups = [aws_security_group.bastion-sg.id]
   }
