@@ -5,10 +5,21 @@ output "bastion-public-ip" {
 
 output "web-alb-dns" {
   value = aws_lb.web-alb.dns_name
+  description = "WEB ALB DNS Name"
+}
+
+output "was-alb-dns" {
+  value = aws_lb.was-alb.dns_name
   description = "WAS ALB DNS Name"
 }
 
+
 output "external-was-alb-dns" {
   value = aws_lb.external-was-alb.dns_name
-  description = "EXTERNAL WEB ALB DNS Name"
+  description = "EXTERNAL WAS ALB DNS Name"
+}
+
+output "rds-address" {
+  value = aws_db_instance.tier-db-instance.address
+  description = "RDS Address"
 }
