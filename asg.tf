@@ -56,9 +56,9 @@ resource "aws_launch_configuration" "was-launch-configuration" {
   user_data = <<-EOF
             #!/bin/bash
             amazon-linux-extras install -y java-openjdk11
-            wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.73/bin/apache-tomcat-8.5.73.tar.gz
-            tar xvf apache-tomcat-8.5.73.tar.gz
-            ./apache-tomcat-8.5.73/bin/startup.sh
+            wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.75/bin/apache-tomcat-8.5.75.tar.gz
+            tar xvf apache-tomcat-8.5.75.tar.gz
+            ./apache-tomcat-8.5.75/bin/startup.sh
             cd /home/ec2-user
             curl -O https://aws-codedeploy-eu-west-1.s3.amazonaws.com/latest/install
             chmod +x ./install
