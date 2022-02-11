@@ -19,10 +19,10 @@ output "external-was-alb-dns" {
   description = "EXTERNAL WAS ALB DNS Name"
 }
 
-output "rds-address" {
+/*output "rds-address" {
   value = aws_db_instance.tier-db-instance.address
   description = "RDS Address"
-}
+}*/
 
 output "codeDeploy-application" {
   value = aws_codedeploy_app.this.name
@@ -32,4 +32,9 @@ output "codeDeploy-application" {
 output "codeDeploy-deployment-group" {
   value = aws_codedeploy_deployment_group.this.deployment_group_name
   description = "Code Deploy Deployment Group"
+}
+
+output "s3-bucket" {
+  value = aws_s3_bucket.bucket.id
+  description = "S3 Bucket Name"
 }
