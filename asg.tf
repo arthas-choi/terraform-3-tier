@@ -46,6 +46,7 @@ resource "aws_launch_configuration" "was-launch-configuration" {
   name   = "${var.resource_prefix}-WAS-LAUNCH-CONFIGURATION"
   image_id      = data.aws_ami.amazon-common-ami.id
   instance_type = var.was_instance_type
+  iam_instance_profile = aws_iam_instance_profile.this.name
 
   key_name = var.instance_key_pair_name
 
@@ -58,6 +59,10 @@ resource "aws_launch_configuration" "was-launch-configuration" {
             wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.73/bin/apache-tomcat-8.5.73.tar.gz
             tar xvf apache-tomcat-8.5.73.tar.gz
             ./apache-tomcat-8.5.73/bin/startup.sh
+            cd /home/ec2-user
+            curl -O https://aws-codedeploy-eu-west-1.s3.amazonaws.com/latest/install
+            chmod +x ./install
+            sudo ./install auto
             EOF
 }
 

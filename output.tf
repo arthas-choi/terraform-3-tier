@@ -23,3 +23,13 @@ output "rds-address" {
   value = aws_db_instance.tier-db-instance.address
   description = "RDS Address"
 }
+
+output "codeDeploy-application" {
+  value = aws_codedeploy_app.this.name
+  description = "Code Deploy Application Name"
+}
+
+output "codeDeploy-deployment-group" {
+  value = aws_codedeploy_deployment_group.this.deployment_group_name
+  description = "Code Deploy Deployment Group"
+}
