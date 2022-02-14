@@ -43,6 +43,18 @@ variable "instance_key_pair_name" {
   description = "Instance Key Pair Name"
 }
 
+variable "create_db" {
+  default = true
+  type = bool
+  description = "RDS Generated or not"
+}
+
+variable "db_name" {
+  default = "demodb"
+  type = string
+  description = "RDS Database Name"
+}
+
 variable "db_username" {
   default = "demouser"
   description = "RDS Access User Name"
@@ -51,4 +63,22 @@ variable "db_username" {
 variable "db_password" {
   default = "demopass"
   description = "RDS Access Password"
+}
+
+variable "bucket_name" {
+  description = "S3 Bucket Name"
+  type = string
+  default = "catalog-s3-bucket"
+}
+
+variable "bucket_versioning" {
+  description = "S3 Bucket Versioning"
+  type        = bool
+  default     = false
+}
+
+variable "bucket_private_acl" {
+  description = "S3 Bucket Private ACL"
+  type        = bool
+  default     = true
 }

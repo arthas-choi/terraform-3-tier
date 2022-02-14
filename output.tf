@@ -19,11 +19,6 @@ output "external-was-alb-dns" {
   description = "EXTERNAL WAS ALB DNS Name"
 }
 
-/*output "rds-address" {
-  value = aws_db_instance.tier-db-instance.address
-  description = "RDS Address"
-}*/
-
 output "codeDeploy-application" {
   value = aws_codedeploy_app.this.name
   description = "Code Deploy Application Name"
