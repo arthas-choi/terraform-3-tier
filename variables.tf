@@ -74,7 +74,7 @@ variable "bucket_name" {
 variable "bucket_versioning" {
   description = "S3 Bucket Versioning"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "bucket_private_acl" {

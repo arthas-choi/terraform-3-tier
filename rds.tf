@@ -1,5 +1,5 @@
 resource "aws_db_instance" "tier-db-instance" {
-  condition = var.create_db ? 1 : 0
+  count = var.create_db ? 1 : 0
 
   allocated_storage      = 10
   db_subnet_group_name   = aws_db_subnet_group.default.id
