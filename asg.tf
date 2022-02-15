@@ -10,6 +10,7 @@ resource "aws_launch_configuration" "web-launch-configuration" {
 
   user_data = base64encode(templatefile("${path.module}/app/run_web.tpl",
   {
+    apache_server_name=aws_lb.was-alb.dns_name
     apache_com_error="apache_error"
     apache_access="apache_access"
     web_alb_dns=aws_lb.was-alb.dns_name

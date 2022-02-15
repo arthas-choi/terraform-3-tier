@@ -1,13 +1,14 @@
 #!/bin/bash
 
-sudo amazon-linux-extras install -y nginx1
-sudo service nginx start
-
 sudo yum install -y httpd
 sudo systemctl start httpd
 
+wget https://seoul-prd-lgc1-assets.s3.ap-northeast-2.amazonaws.com/starter-template.zip
+sudo unzip starter-template.zip -d /var/www/html
+
 cat <<EOF | sudo tee -a /etc/httpd/conf.d/was.conf
 <VirtualHost *:80>
+    ServerName ${apache_server_name}
     ErrorLog logs/${apache_com_error}
     CustomLog logs/${apache_access} common
 
