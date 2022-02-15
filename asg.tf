@@ -8,11 +8,15 @@ resource "aws_launch_configuration" "web-launch-configuration" {
   associate_public_ip_address = false
   security_groups = [aws_security_group.web-lc-sg.id]
 
-  user_data = <<-EOF
-              #!/bin/bash
-              sudo amazon-linux-extras install -y nginx1
-              sudo service nginx start
-              EOF
+  user_data = base64encode(templatefile("${path.module}/app/run_web.tpl",
+  {
+    apache_com_error="apache_error"
+    apache_access="apache_access"
+    web_alb_dns=aws_lb.was-alb.dns_name
+    web_alb_port="8080"
+    web_app=""
+    was_app=""
+  }))
 }
 
 resource "aws_autoscaling_group" "web-autoscaling-group" {
